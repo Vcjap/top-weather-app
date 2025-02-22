@@ -8,10 +8,30 @@ const getData = async (location) => {
             "headers": {
             }
             })
-        console.log(locationData);
+        const locationDataUnpacked = await locationData.json();
+        return locationDataUnpacked;
     } catch (error) {
         console.log(error)
     }
 }
 
-export default {getData}
+const getDayData = (day) => {
+    const dayData = {
+        conditions: day.conditions,
+        temp: day.temp,
+        feelslike: day.feelslike,
+        tempmax: day.tempmax,
+        tempmin: day.tempmin,
+        description: day.description
+    }
+    return dayData
+}
+
+const getForecast = async (location, daysToForecast = 1) => {
+    const newData = await getData(location);
+    const selectedDays = await newData.days.slice(0,daysToForecast);
+    const daysWithData = selectedDays.map(getDayData)
+    return daysWithData
+}
+
+export default {getForecast}
