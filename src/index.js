@@ -5,6 +5,9 @@ import dom from "./dom.js";
 const container = document.querySelector("body");
 
 const forecast = await weather.getForecast("london", 3, "metric")
-console.log(forecast[0]);
-dom.createCard(forecast[0], container);
+
+forecast.forEach(day => {
+    dom.createCard(day, container)
+});
+// dom.createCard(forecast[0], container);
 
