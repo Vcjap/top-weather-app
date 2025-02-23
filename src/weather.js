@@ -10,7 +10,7 @@ const getData = async (location, unitGroup) => {
         const locationDataUnpacked = await locationData.json();
         return locationDataUnpacked;
     } catch (error) {
-        console.log(error)
+        throw error;
     }
 }
 
@@ -30,7 +30,6 @@ const getDayData = (day) => {
 const getForecast = async (location, daysToForecast = 2, unitGroup = "metric") => {
         const newData = await getData(location, unitGroup);
         const selectedDays = await newData.days.slice(0,daysToForecast);
-        console.log(selectedDays);
         const daysWithData = selectedDays.map(getDayData)
         return daysWithData
 }

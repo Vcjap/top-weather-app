@@ -16,7 +16,7 @@ fahrenheitBtn.addEventListener("click", async (event) => showForecast(event, eve
 const showForecast = async (event, newForecastSystem) => {
     event.preventDefault();
     dom.refreshDisplay([{}]); // Show the loader while we fetch data
-
+    dom.toggleSystemBtn(forecastSystem, newForecastSystem);
     try {
         const queryInput = document.getElementById("query");
         const location = queryInput.value;
@@ -25,7 +25,6 @@ const showForecast = async (event, newForecastSystem) => {
         dom.refreshDisplay(forecast);
     } catch {
         const container = document.getElementById("forecast_container");
-        container.innerHTML = "";
         container.textContent = "Location not found. Try another one!";
     }
 }

@@ -1,3 +1,58 @@
 body {
-    background-color: aquamarine;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    --main-accent-settings: violet;
 }
+
+#forecast_container {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+form {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+#search_bar {
+    display: flex;
+    border: 2px solid var(--main-accent-settings);
+    border-radius: 3px;
+}
+
+#search_bar > * {
+    border: none;
+}
+
+#search_location {
+    background-color: var(--main-accent-settings);
+    color: white;
+}
+
+#system_toggle {
+    border: 2px solid var(--main-accent-settings);
+    border-radius: 3px;
+    display: flex;
+}
+
+.system_button {
+    background-color: white;
+    border: none;
+    margin: none;
+}
+
+.system_current {
+    background-color: var(--main-accent-settings);
+    color: white;
+    font-weight: bolder;
+}
+/* 
+.card {
+
+} */

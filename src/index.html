@@ -7,10 +7,14 @@
 </head>
 <body>
     <form>
-        <input id="query", name="query", type="text", placeholder="Enter a city...", required>
-        <button id="search_location">Search</button>
-        <button id="metric">C</button>
-        <button id="us">F</button>
+        <div id="search_bar">
+            <input id="query", name="query", type="text", placeholder="Enter a city...", required>
+            <button id="search_location">Search</button>
+        </div>
+        <div id="system_toggle">
+            <button id="metric", class="system_current system_button">C</button>
+            <button id="us" class="system_button">F</button>
+        </div>
     </form>
     <div id="forecast_container">
 
