@@ -10,8 +10,15 @@ searchLocationBtn.addEventListener("click", async (event) => {
     dom.refreshDisplay([{}]);
     const queryInput = document.getElementById("query");
     const location = queryInput.value;
-    const forecast = await weather.getForecast(location, 3, "metric")
-    dom.refreshDisplay(forecast)
+
+    try {
+        const forecast = await weather.getForecast(location, 3, "metric");
+        dom.refreshDisplay(forecast);
+    } catch {
+        const container = document.getElementById("forecast_container");
+        container.innerHTML = "";
+        container.textContent = "Location not found. Try another one!";
+    }
 })
 
 const celsiusBtn = document.getElementById("metric");
@@ -20,8 +27,8 @@ celsiusBtn.addEventListener("click", async (event) => {
     dom.refreshDisplay([{}]);
     const queryInput = document.getElementById("query");
     const location = queryInput.value;
-    const forecast = await weather.getForecast(location, 3, event.target.id)
-    dom.refreshDisplay(forecast)
+    const forecast = await weather.getForecast(location, 3, event.target.id);
+    dom.refreshDisplay(forecast);
 });
 
 const fahrenheitBtn = document.getElementById("us")
@@ -30,6 +37,6 @@ fahrenheitBtn.addEventListener("click", async (event) => {
     dom.refreshDisplay([{}]);
     const queryInput = document.getElementById("query");
     const location = queryInput.value;
-    const forecast = await weather.getForecast(location, 3, event.target.id)
-    dom.refreshDisplay(forecast)
+    const forecast = await weather.getForecast(location, 3, event.target.id);
+    dom.refreshDisplay(forecast);
 });
