@@ -28,7 +28,7 @@ const getDayData = (day) => {
     return dayData
 }
 
-const getForecast = async (location, daysToForecast = 1, unitGroup = "metric") => {
+const getForecast = async (location, daysToForecast = 2, unitGroup = "metric") => {
     const newData = await getData(location, unitGroup);
     const selectedDays = await newData.days.slice(0,daysToForecast);
     console.log(selectedDays);
