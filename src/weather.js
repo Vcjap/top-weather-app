@@ -1,9 +1,9 @@
 
-const getData = async (location) => {
+const getData = async (location, unitGroup) => {
     const apiKey = "3LSNWAWR7J3Z5NMVK7E5KZ7T2";
 
     try {
-        const locationData = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=${apiKey}&contentType=json`, {
+        const locationData = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=${apiKey}&unitGroup=${unitGroup}&contentType=json`, {
             "method": "GET",
             "headers": {
             }
@@ -17,6 +17,7 @@ const getData = async (location) => {
 
 const getDayData = (day) => {
     const dayData = {
+        datetime: day.datetime,
         conditions: day.conditions,
         temp: day.temp,
         feelslike: day.feelslike,
@@ -27,9 +28,10 @@ const getDayData = (day) => {
     return dayData
 }
 
-const getForecast = async (location, daysToForecast = 1) => {
-    const newData = await getData(location);
+const getForecast = async (location, daysToForecast = 1, unitGroup = "metric") => {
+    const newData = await getData(location, unitGroup);
     const selectedDays = await newData.days.slice(0,daysToForecast);
+    console.log(selectedDays);
     const daysWithData = selectedDays.map(getDayData)
     return daysWithData
 }

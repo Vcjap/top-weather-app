@@ -1,8 +1,10 @@
 import "./styles.css";
-import weather from "./weather"
+import weather from "./weather.js";
+import dom from "./dom.js";
 
-console.log("Hello World!")
+const container = document.querySelector("body");
 
-const forecast = await weather.getForecast("london", 3)
+const forecast = await weather.getForecast("london", 3, "metric")
+console.log(forecast[0]);
+dom.createCard(forecast[0], container);
 
-console.log(forecast);
