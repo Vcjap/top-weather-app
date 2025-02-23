@@ -10,4 +10,12 @@ const createCard = (dayData, container) => {
     container.append(card);
 }
 
-export default {createCard}
+const refreshDisplay = (forecast) => {
+    const container = document.getElementById("forecast_container");
+    container.innerHTML = "";
+    forecast.forEach(day => {
+        createCard(day, container)
+    });
+}
+
+export default {createCard, refreshDisplay}
