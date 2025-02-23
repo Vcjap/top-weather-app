@@ -14,6 +14,7 @@ const getData = async (location, unitGroup) => {
     }
 }
 
+// Use this to filter the data we want
 const getDayData = (day) => {
     const dayData = {
         datetime: day.datetime,

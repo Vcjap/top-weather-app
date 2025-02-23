@@ -35,6 +35,7 @@ const refreshDisplay = (forecast) => {
     });
 }
 
+//Purely esthetic
 const toggleSystemBtn = (oldForecastSystem, newForecastSystem) => {
     if (oldForecastSystem !== newForecastSystem) {
         console.log(`Old system: ${oldForecastSystem}, New system: ${newForecastSystem}`);
